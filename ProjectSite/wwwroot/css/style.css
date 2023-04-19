@@ -1,0 +1,190 @@
+﻿
+
+.container {
+    margin-top:30px;
+    
+    width:2000px;
+  margin:0px auto;
+   
+  
+
+}
+
+.row1 {
+
+    
+    margin-top: 10px;
+   width: 1128px;
+  
+    height: 520px;
+}
+
+.col1 {
+    background-color: white;
+    float: left;
+    margin-right: 20px;
+    width: 650px;
+    height: 490px;
+
+}
+.col1 a {
+    color: black;
+    font-size: medium;
+    text-decoration: none;
+}
+
+    .col1 a:hover {
+        color: red;
+    }
+
+.col2 {
+    float: left;
+    width: 445px;
+    height: 490px;
+    
+}
+
+
+
+.row2 {
+    margin-top: 30px;
+    width: 1128px;
+     height: 400px;
+ 
+}
+.col3 {
+    margin-top: 10px;
+    background-color: white;
+    float: left;
+    margin-left: 8px;
+    width: 270px;
+    height: 350px;
+  
+}
+.col3 a{color:black; font-size:medium; text-decoration:none;}
+.col3 a:hover{color:red;}
+
+
+.row3 {
+   
+   
+    width: 1128px;
+    height: 555px;
+  
+}
+.col4 {
+    margin-top: 10px;
+    background-color: white;
+    float: left;
+    height: auto;
+    width: 1120px;
+    margin-bottom:10px;
+}
+.col4 h3:hover{
+    color:red;
+}
+
+
+.row4 {
+    margin-top: 30px;
+    width: 1110px;
+    height: 520px;
+ 
+}
+
+.row5 {
+    margin-top: 3px;
+    width: 1110px;
+        height: 350px;
+        
+}
+
+.col5 {
+    margin-top: 10px;
+    margin-right: 20px;
+    background-color: white;
+    float: left;
+    width: 750px;
+   height: auto;
+   margin-bottom:20px;
+
+}
+
+.col5 h2:hover{color:red;}
+.col6 {
+    margin-top: 10px;
+    float: right;
+    width: 330px;
+    text-align: right;
+    height: auto;
+    margin-bottom: 185px;
+}
+
+.row6 {
+    margin-top:5px;
+    width: 1110px;
+        height: 310px;
+       
+    margin-bottom: 10px;
+  
+}
+
+.col7 {
+    margin-top: 10px;
+    margin-right: 10px;
+    float: left;
+    width: 266px;
+    height: auto;
+}
+.row7 {
+    width: 1110px;
+       height: 70px;
+    margin-top: 10px;
+    float: left;
+    margin-bottom: 10px;
+   
+
+}
+
+.row8 {
+    width: 800px;
+    height: 555px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    float: left;
+   
+}
+
+
+.ciftRow {
+    width: 280px;
+    height: 560px;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.row9 {
+    
+    width: 275px;
+    height: 310px;
+    float: left;
+
+}
+
+.row10 {
+    width: 275px;
+    height: 245px;
+    margin-bottom: 10px;
+    float: left;
+   
+}
+
+.row11 {
+    width: 1110px;
+    height: 517px;
+    margin-top: 10px;
+   
+   
+}

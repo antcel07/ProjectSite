@@ -1,0 +1,511 @@
+﻿
+    
+
+ @model ProjectSite.Models.JsonViewModel.ArticleViewModel
+
+  
+
+<link href="~/css/style.css" rel="stylesheet" />
+
+
+@*Layout sayfası temel olarak bu sayfayı baz alır değişen yerler renderBody ile gösterilmiştir.
+Google meta arama optimizasyonu için etiketler layout kısmına eklenmiştir*@
+
+<div  class="row1">
+
+    <div class="col1">
+
+
+
+
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[1].Url">
+            <img src="@Model.NewsArticleViewModel.data.articles.Response[1].primaryImage" width="650" height="380" />
+            </a>
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[0].Url">
+
+            @{
+                
+                if (!string.IsNullOrEmpty(@Model.NewsArticleViewModel.data.articles.Response[0].TitleShort))
+                {
+                    <h1>@Model.NewsArticleViewModel.data.articles.Response[0].TitleShort</h1>
+                }
+                else
+                {
+                    <h1>@Model.NewsArticleViewModel.data.articles.Response[0].Title</h1>
+                }
+            }
+
+        </a>
+    </div>
+    
+    <div class="col2">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[2].Url"><img src="@Model.NewsArticleViewModel.data.articles.Response[2].secondaryImage" /></a>
+        <br /><br />
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[3].Url"><img src="@Model.NewsArticleViewModel.data.articles.Response[3].secondaryImage" /></a>
+    </div>
+
+</div>
+
+
+
+<div class="row2">
+    
+
+  
+    <div class="col3">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[4].Url"><img src="@Model.NewsArticleViewModel.data.articles.Response[4].primaryImage" width="270" height="200" /></a>
+        <br />
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[4].Url"><h2>@Model.NewsArticleViewModel.data.articles.Response[4].TitleShort</h2> </a>
+    </div>
+
+    <div class="col3">
+
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[5].Url"><img src="@Model.NewsArticleViewModel.data.articles.Response[5].primaryImage" width="270" height="200" /></a>
+        <br />
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[5].Url"><h2>@Model.NewsArticleViewModel.data.articles.Response[5].TitleShort</h2> </a>
+
+    </div>
+
+
+    <div class="col3">
+
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[6].Url"><img src="@Model.NewsArticleViewModel.data.articles.Response[6].primaryImage" width="270" height="200" /></a>
+        <br />
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[6].Url"><h2>@Model.NewsArticleViewModel.data.articles.Response[6].TitleShort</h2> </a>
+    </div>
+
+
+    <div class="col3">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[7].Url"><img src="@Model.NewsArticleViewModel.data.articles.Response[7].primaryImage" width="270" height="200" /></a>
+        <br />
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[7].Url"><h2>@Model.NewsArticleViewModel.data.articles.Response[7].TitleShort</h2> </a>
+
+    </div>
+</div>
+
+<br />
+
+<div class="row3">
+    <div class="col4">
+        <h3>@Model.NewsArticleViewModel.data.articles.Response[10].Title</h3>
+        <p>@Model.NewsArticleViewModel.data.articles.Response[10].Spot</p>
+    </div>
+
+    <div class="col4">
+        <h3>@Model.NewsArticleViewModel.data.articles.Response[11].Title</h3>
+        <p>@Model.NewsArticleViewModel.data.articles.Response[11].Spot</p>
+    </div>
+    
+
+    <div class="col4">
+        <h3>@Model.NewsArticleViewModel.data.articles.Response[12].Title</h3>
+        <p>@Model.NewsArticleViewModel.data.articles.Response[12].Spot</p>
+    </div>
+</div>
+
+
+<div class="row4">
+    <video width="1100" height="500" poster="@Model.NewsVideosViewModel.data.videos.Response[1].primaryImage" controls>
+        <source src="@Model.NewsVideosViewModel.data.videos.Response[1].VideoUrl" type="    @Model.NewsVideosViewModel.data.videos.Response[1].VideoType/mp4">
+    </video>
+
+  
+</div>
+
+<br />
+
+<div class="row5">
+
+    <div class="col5">
+        @{
+            if (!string.IsNullOrEmpty(@Model.NewsVideosViewModel.data.videos.Response[1].TitleShort))
+            {
+                <h2>@Model.NewsVideosViewModel.data.videos.Response[1].TitleShort</h2>
+            }
+            else
+            {
+                <h2>@Model.NewsVideosViewModel.data.videos.Response[1].Title</h2>
+            }
+        }
+        
+
+        <p>@Model.NewsVideosViewModel.data.videos.Response[1].Spot</p>
+    </div>
+
+    <div class="col6">
+        @{
+            var tarih = @Model.NewsVideosViewModel.data.videos.Response[1].OutputDate;
+            DateTime yeniTarih = DateTime.Parse(tarih);
+            <h3>@yeniTarih.ToLongDateString()</h3>
+            //tarih formatı
+            <h3>@yeniTarih.ToShortTimeString()</h3>
+            //saat formatı
+
+        }
+
+    </div>
+    
+</div>
+<br />
+@*
+foreach ile kontrol et ve isnull ile boş olup olmadığını if ile check et*@
+
+@{
+ 
+    var sonuc =  Model.NewsArticleViewModel.data.articles.Response;
+    
+        
+    if (sonuc != null)
+    {
+        <div class="row6">
+       
+        //ilk 8 tane veriyi almak için
+            @foreach (var item in sonuc.Take(8))  
+            {
+                <div class="col7">
+                    <a href="@item.Url">
+                        <img src="@item.secondaryImage" width="266" />
+                    </a>
+                </div>
+            }
+        </div>
+    }
+
+
+}
+
+@*
+@*
+<div class="row6">
+    <div class="col7">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[2].Url">
+            <img src="@Model.NewsArticleViewModel.data.articles.Response[2].secondaryImage" width="266" />
+            </a>
+    </div>
+    <div class="col7">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[3].Url">
+            <img src="@Model.NewsArticleViewModel.data.articles.Response[3].secondaryImage" width="266" />
+        </a>
+    </div>
+    <div class="col7">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[4].Url">
+            <img src="@Model.NewsArticleViewModel.data.articles.Response[4].secondaryImage" width="266" />
+        </a>
+    </div>
+    <div class="col7">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[5].Url">
+            <img src="@Model.NewsArticleViewModel.data.articles.Response[5].secondaryImage" width="266" />
+        </a>
+    </div>
+    <div class="col7">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[6].Url">
+            <img src="@Model.NewsArticleViewModel.data.articles.Response[6].secondaryImage" width="266" />
+        </a>
+    </div>
+      <div class="col7">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[7].Url">
+            <img src="@Model.NewsArticleViewModel.data.articles.Response[7].secondaryImage" width="266" />
+    </div>
+      <div class="col7">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[8].Url">
+            <img src="@Model.NewsArticleViewModel.data.articles.Response[8].secondaryImage" width="266" />
+    </div>
+    <div class="col7">
+        <a href="@Model.NewsArticleViewModel.data.articles.Response[9].Url">
+            <img src="@Model.NewsArticleViewModel.data.articles.Response[9].secondaryImage" width="266" />
+        </a>
+    </div>
+    </div>
+    *@
+
+
+
+
+
+
+<br />
+<div class="row7">
+    <script async src="https://cse.google.com/cse.js?cx=1475f1520941a496e">
+</script>
+<div class="gcse-search"></div>
+</div>
+
+<br />
+<div class="row8">
+
+
+    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                        <a href="@Model.NewsArticleViewModel.data.articles.Response[1].Url">
+                <img src="@Model.NewsArticleViewModel.data.articles.Response[1].primaryImage" width="800" height="555"  class="d-block w-100" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="@Model.NewsArticleViewModel.data.articles.Response[2].Url">
+                    <img src="@Model.NewsArticleViewModel.data.articles.Response[2].primaryImage" width="800" height="555" class="d-block w-100" alt="...">
+                <a/>
+            </div>
+            <div class="carousel-item">
+                  <a href="@Model.NewsArticleViewModel.data.articles.Response[3].Url">
+                    <img src="@Model.NewsArticleViewModel.data.articles.Response[3].primaryImage" width="800" height="555" class="d-block w-100" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                  <a href="@Model.NewsArticleViewModel.data.articles.Response[4].Url">
+                    <img src="@Model.NewsArticleViewModel.data.articles.Response[4].primaryImage" width="800" height="555" class="d-block w-100" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                  <a href="@Model.NewsArticleViewModel.data.articles.Response[5].Url">
+                    <img src="@Model.NewsArticleViewModel.data.articles.Response[5].primaryImage" width="800" height="555" class="d-block w-100" alt="...">
+                </a>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+ 
+
+ 
+
+
+</div>
+
+
+<div class="ciftRow">
+
+<div class="row9">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Haber Kategorileri</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>@Model.CatergoryNames[0]</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>@Model.CatergoryNames[1]</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">@Model.CatergoryNames[2]</td>
+            </tr>
+
+             <tr>
+                <th scope="row">4</th>
+                <td colspan="2">@Model.CatergoryNames[3]</td>
+            </tr>
+
+             <tr>
+                <th scope="row">5</th>
+                <td colspan="2">@Model.CatergoryNames[4]</td>
+            </tr>
+@*
+             <tr>
+                <th scope="row">6</th>
+                <td colspan="2">@Model.CatergoryNames[5]</td>
+            </tr>*@
+
+        </tbody>
+    </table>
+
+
+</div>
+
+
+<div class="row10">
+        <div id="ww_75a79f2bc2e64" v='1.3' loc='id' a='{"t":"horizontal","lang":"tr","sl_lpl":1,"ids":[],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'>Weather Data Source: <a href="https://weerlabs.nl/weer_istanboel/vandaag/" id="ww_75a79f2bc2e64_u" target="_blank">Istanboel weer vandaag per uur</a></div><script async src="https://app1.weatherwidget.org/js/?id=ww_75a79f2bc2e64"></script>
+
+</div>
+
+</div>
+
+
+
+<br />
+<div>
+    <p class="placeholder-glow">
+        <span class="placeholder col-12"></span>
+    </p>
+
+    <p class="placeholder-wave">
+        <span class="placeholder col-12"></span>
+    </p>
+</div>
+<br />
+
+<div class="row11">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <img src="@Model.NewsArticleViewModel.data.articles.Response[14].secondaryImage" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.NewsArticleViewModel.data.articles.Response[14].Title.Substring(0,50)...</h5>
+                    <p class="card-text">@Model.NewsArticleViewModel.data.articles.Response[14].Spot.Substring(0,180)...</p>
+
+                    
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        Devamını Oku
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@Model.NewsArticleViewModel.data.articles.Response[14].Title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @Model.NewsArticleViewModel.data.articles.Response[14].Spot
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="@Model.NewsArticleViewModel.data.articles.Response[15].secondaryImage" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.NewsArticleViewModel.data.articles.Response[15].Title.Substring(0,50)...</h5>
+                    <p class="card-text">@Model.NewsArticleViewModel.data.articles.Response[15].Spot.Substring(0,180)...</p>
+
+                  
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        Devamını Oku
+                    </button>
+
+                    
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@Model.NewsArticleViewModel.data.articles.Response[15].Title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @Model.NewsArticleViewModel.data.articles.Response[15].Spot
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="@Model.NewsArticleViewModel.data.articles.Response[16].secondaryImage" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.NewsArticleViewModel.data.articles.Response[16].Title.Substring(0,50)...</h5>
+                    <p class="card-text">@Model.NewsArticleViewModel.data.articles.Response[16].Spot.Substring(0,180)...</p>
+            
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                        Devamını Oku
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@Model.NewsArticleViewModel.data.articles.Response[16].Title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @Model.NewsArticleViewModel.data.articles.Response[16].Spot
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="@Model.NewsArticleViewModel.data.articles.Response[17].secondaryImage" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.NewsArticleViewModel.data.articles.Response[17].Title.Substring(0,50)...</h5>
+                    <p class="card-text">@Model.NewsArticleViewModel.data.articles.Response[17].Spot.Substring(0,180)...</p>
+                
+       
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4">
+                        Devamını Oku
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">@Model.NewsArticleViewModel.data.articles.Response[17].Title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body2">
+                                    @Model.NewsArticleViewModel.data.articles.Response[17].Spot
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+        
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+
+
+
+
